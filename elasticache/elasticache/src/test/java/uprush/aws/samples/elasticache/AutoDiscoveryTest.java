@@ -48,7 +48,16 @@ public class AutoDiscoveryTest
             String got = client.get(key).toString();
             
             assertEquals(value, got);
-
+            
+            // more cases
+            for (int i = 0; i < 1000; i++) {
+            	key = String.format("foo%d", i);
+            	value = String.format("bar%d", i);
+            	client.set(key, 3600, value);
+            	got = client.get(key).toString();
+            	assertEquals(value, got);
+            }
+            
       } catch (Exception e) {
         e.printStackTrace();
         fail("Something is wrong!");
