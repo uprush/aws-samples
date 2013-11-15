@@ -42,14 +42,7 @@ public class AutoDiscoveryTest
             MemcachedClient client = ad.connect(configEndpoint, clusterPort);
 
             // Store a data item for an hour.  The client will decide which cache host will store this item. 
-            String key = "theKey";
-            String value = "This is the data value";
-            client.set(key, 3600, value);
-            String got = client.get(key).toString();
-            
-            assertEquals(value, got);
-            
-            // more cases
+            String key, value, got;            
             for (int i = 0; i < 1000; i++) {
             	key = String.format("foo%d", i);
             	value = String.format("bar%d", i);
