@@ -1,37 +1,17 @@
 package uprush.aws.samples.elasticache;
 
-import junit.framework.Test;
-import junit.framework.TestCase;
-import junit.framework.TestSuite;
 import net.spy.memcached.MemcachedClient;
 
-/**
- * Unit test for simple App.
- */
+import org.junit.runner.RunWith;
+import org.junit.runners.JUnit4;
+import org.junit.Test;
+import static org.junit.Assert.*;
+
+@RunWith(JUnit4.class)
 public class AutoDiscoveryTest 
-    extends TestCase
 {
-    /**
-     * Create the test case
-     *
-     * @param testName name of the test case
-     */
-    public AutoDiscoveryTest( String testName )
-    {
-        super( testName );
-    }
 
-    /**
-     * @return the suite of tests being tested
-     */
-    public static Test suite()
-    {
-        return new TestSuite( AutoDiscoveryTest.class );
-    }
-
-    /**
-     * Rigourous Test :-)
-     */
+	@Test
     public void testConnect()
     {
         try {

@@ -2,3 +2,5 @@
 *.classpath
 elasticache/elasticache/.settings
 elasticache/elasticache/target
+dynamodb/dynamodb/.settings
+dynamodb/dynamodb/target
