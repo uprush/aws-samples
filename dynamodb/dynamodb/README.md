@@ -12,4 +12,4 @@ You will need to use the same version as EMR. Or replace the aws-java-sdk shippe
 
 ## Run EMR DynamoDB sample
 
-    ./elastic-mapreduce -j <job_flow> --jar s3://yifeng-public/download/dynamodb-0.0.1-SNAPSHOT.jar --args "s3://yifeng-public/text,<access_key>,<secret_key>,<region>"
+    ./elastic-mapreduce -j <job_flow> --jar s3://<bucket>/<folder>/dynamodb-0.0.1-SNAPSHOT.jar --args "s3://<bucket>/<input_folder>,<access_key>,<secret_key>,<region>"
