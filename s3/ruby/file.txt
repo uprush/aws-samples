@@ -1,0 +1,2 @@
+Hello AWS SDK for Ruby!
+Like S3.
