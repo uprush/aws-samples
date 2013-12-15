@@ -17,6 +17,8 @@ class PostsController < ApplicationController
   end
 
   def index
+    counter = session[:counter] || 0
+    session[:counter] = counter + 1
     @posts = Post.all
   end
 
