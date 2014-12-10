@@ -1,0 +1,28 @@
+#!/bin/bash
+
+DEMO_HOME=`dirname $0`
+DEMO_HOME=`cd $DEMO_HOME; pwd`
+
+function check-reachability() {
+    for NODE in `cat $DEMO_HOME/all-nodes`
+    do
+        ssh -o StrictHostKeyChecking=no $NODE "exit" && echo "$NODE    OK"
+        sleep 1
+    done
+}
+
+function install_ab() {
+  pdsh -l ec2-user -R ssh -w ^$DEMO_HOME/all-nodes "sudo yum install -y httpd-tools"
+}
+
+function run_ab() {
+    pdsh -l ec2-user -R ssh -w ^$DEMO_HOME/all-nodes "ab -c 8 -n 100000 http://d2cmo81eb7c6nw.cloudfront.net/images/wall045-1440x900.jpg"
+    pdsh -l ec2-user -R ssh -w ^$DEMO_HOME/all-nodes "ab -c 8 -n 100000 http://d2cmo81eb7c6nw.cloudfront.net/images/wall038-1440x900.jpg"
+    pdsh -l ec2-user -R ssh -w ^$DEMO_HOME/all-nodes "ab -c 8 -n 100000 http://d2cmo81eb7c6nw.cloudfront.net/images/wall041-1440x900.jpg"
+    pdsh -l ec2-user -R ssh -w ^$DEMO_HOME/all-nodes "ab -c 8 -n 100000 http://d2cmo81eb7c6nw.cloudfront.net/images/wall099-1440x900.jpg"
+}
+
+check-reachability
+install_ab
+run_ab
+
